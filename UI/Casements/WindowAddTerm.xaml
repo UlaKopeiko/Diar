@@ -1,0 +1,34 @@
+﻿<Window x:Class="Diary.UI.Casements.WindowAddTerm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.UI.Casements"
+         mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Дневник самочувствия" MinHeight="400" MinWidth="1000" MaxHeight="500" MaxWidth="1000" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Background="#406474">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Термин:"  Style="{StaticResource HeaderForDark}" Margin="10"/>
+            <TextBox Width="250" Name="tbxTerm" Background="White" MaxLength="50" Height="auto" MinHeight="30" 
+                     VerticalContentAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+            <TextBlock Text="Описание:" Style="{StaticResource HeaderForDark}" Margin="10"></TextBlock>
+            <TextBox Width="800" Name="tbxText" Background="White" MaxLength="300" Height="auto" MinHeight="80" 
+                     VerticalContentAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Отменить" Margin="10" Name="btnBack" Click="btnBack_Click" />
+                <Button Content="Сохранить" Margin="200 10 10 10" Name="btnSave" Click="btnSave_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

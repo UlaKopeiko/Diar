@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActivityTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Test1" Relationship="Self.FK_ActivityTime_Test" FromRole="ActivityTime" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Question" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Question1" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="CharacterAccentuation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_CharacterAccentuation" FromRole="CharacterAccentuation" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Directory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="Guid" Nullable="false" />
+    <Property Name="DocumentSource" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="DocumentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Document_Employee" FromRole="Document" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Temperament" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Motivation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CharacterAccentuation" Type="Int32" />
+    <NavigationProperty Name="CharacterAccentuation1" Relationship="Self.FK_Employee_CharacterAccentuation" FromRole="Employee" ToRole="CharacterAccentuation" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_Document_Employee" FromRole="Employee" ToRole="Document" />
+    <NavigationProperty Name="Position1" Relationship="Self.FK_Employee_Position" FromRole="Employee" ToRole="Position" />
+    <NavigationProperty Name="Feelings" Relationship="Self.FK_Feeling_Employee" FromRole="Employee" ToRole="Feeling" />
+    <NavigationProperty Name="Journals" Relationship="Self.FK_Journal_Employee" FromRole="Employee" ToRole="Journal" />
+  </EntityType>
+  <EntityType Name="Feeling">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrentDeviations" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Complaints" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="Evaluation" Type="Int32" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Feeling_Employee" FromRole="Feeling" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Formula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Contributions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumberOfFactors" Type="Int32" />
+    <NavigationProperty Name="FormulaForTests" Relationship="Self.FK_FormulaForTest_Formula" FromRole="Formula" ToRole="FormulaForTest" />
+  </EntityType>
+  <EntityType Name="FormulaForTest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <Property Name="Formula" Type="Int32" Nullable="false" />
+    <Property Name="Final" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Formula1" Relationship="Self.FK_FormulaForTest_Formula" FromRole="FormulaForTest" ToRole="Formula" />
+    <NavigationProperty Name="Test1" Relationship="Self.FK_FormulaForTest_Test" FromRole="FormulaForTest" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Journal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Test" Type="Int32" />
+    <Property Name="Employee" Type="Int32" Nullable="false" />
+    <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Journal_Employee" FromRole="Journal" ToRole="Employee" />
+    <NavigationProperty Name="Test1" Relationship="Self.FK_Journal_Test" FromRole="Journal" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Position" FromRole="Position" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <Property Name="Factor" Type="Int32" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+    <NavigationProperty Name="Test1" Relationship="Self.FK_Question_Test" FromRole="Question" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LowValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MediumValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HighValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Test" Type="Int32" Nullable="false" />
+    <Property Name="LowThreshold" Type="Int32" Nullable="false" />
+    <Property Name="HighЕhreshold" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Test1" Relationship="Self.FK_Results_Test" FromRole="Results" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Warning" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivityTimes" Relationship="Self.FK_ActivityTime_Test" FromRole="Test" ToRole="ActivityTime" />
+    <NavigationProperty Name="FormulaForTests" Relationship="Self.FK_FormulaForTest_Test" FromRole="Test" ToRole="FormulaForTest" />
+    <NavigationProperty Name="Journals" Relationship="Self.FK_Journal_Test" FromRole="Test" ToRole="Journal" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Question_Test" FromRole="Test" ToRole="Question" />
+    <NavigationProperty Name="Results" Relationship="Self.FK_Results_Test" FromRole="Test" ToRole="Results" />
+    <NavigationProperty Name="TestStatu" Relationship="Self.FK_Test_TestStatus" FromRole="Test" ToRole="TestStatus" />
+  </EntityType>
+  <EntityType Name="TestStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_Test_TestStatus" FromRole="TestStatus" ToRole="Test" />
+  </EntityType>
+  <Association Name="FK_ActivityTime_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="1" />
+    <End Role="ActivityTime" Type="Self.ActivityTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActivityTime">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_CharacterAccentuation">
+    <End Role="CharacterAccentuation" Type="Self.CharacterAccentuation" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CharacterAccentuation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CharacterAccentuation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Document_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feeling_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Feeling" Type="Self.Feeling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Feeling">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Journal_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Journal">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormulaForTest_Formula">
+    <End Role="Formula" Type="Self.Formula" Multiplicity="1" />
+    <End Role="FormulaForTest" Type="Self.FormulaForTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formula">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormulaForTest">
+        <PropertyRef Name="Formula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormulaForTest_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="1" />
+    <End Role="FormulaForTest" Type="Self.FormulaForTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormulaForTest">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Journal_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+    <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Journal">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="1" />
+    <End Role="Results" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="Test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_TestStatus">
+    <End Role="TestStatus" Type="Self.TestStatu" Multiplicity="1" />
+    <End Role="Test" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DiaryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActivityTimes" EntityType="Self.ActivityTime" />
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="CharacterAccentuations" EntityType="Self.CharacterAccentuation" />
+    <EntitySet Name="Directories" EntityType="Self.Directory" />
+    <EntitySet Name="Documents" EntityType="Self.Document" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Feelings" EntityType="Self.Feeling" />
+    <EntitySet Name="Formulae" EntityType="Self.Formula" />
+    <EntitySet Name="FormulaForTests" EntityType="Self.FormulaForTest" />
+    <EntitySet Name="Journals" EntityType="Self.Journal" />
+    <EntitySet Name="Positions" EntityType="Self.Position" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Results" EntityType="Self.Result" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tests" EntityType="Self.Test" />
+    <EntitySet Name="TestStatus" EntityType="Self.TestStatu" />
+    <AssociationSet Name="FK_ActivityTime_Test" Association="Self.FK_ActivityTime_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="ActivityTime" EntitySet="ActivityTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_CharacterAccentuation" Association="Self.FK_Employee_CharacterAccentuation">
+      <End Role="CharacterAccentuation" EntitySet="CharacterAccentuations" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Document_Employee" Association="Self.FK_Document_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feeling_Employee" Association="Self.FK_Feeling_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Feeling" EntitySet="Feelings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Journal_Employee" Association="Self.FK_Journal_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Journal" EntitySet="Journals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormulaForTest_Formula" Association="Self.FK_FormulaForTest_Formula">
+      <End Role="Formula" EntitySet="Formulae" />
+      <End Role="FormulaForTest" EntitySet="FormulaForTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormulaForTest_Test" Association="Self.FK_FormulaForTest_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="FormulaForTest" EntitySet="FormulaForTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Journal_Test" Association="Self.FK_Journal_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="Journal" EntitySet="Journals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Test" Association="Self.FK_Question_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Test" Association="Self.FK_Results_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_TestStatus" Association="Self.FK_Test_TestStatus">
+      <End Role="TestStatus" EntitySet="TestStatus" />
+      <End Role="Test" EntitySet="Tests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

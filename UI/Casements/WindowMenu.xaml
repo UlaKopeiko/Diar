@@ -1,0 +1,146 @@
+﻿<Window x:Class="Diary.WindowMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Дневник самочувствия" MinHeight="700" MinWidth="1300" MaxHeight="900" MaxWidth="1400" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="10,10,10,0">
+                <Border CornerRadius="10" BorderThickness="5" BorderBrush="#406474">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top"  Height="90">
+                        <Image Source="/Source/Logo.png"  Width="70" Height="70" Margin="0 5 0 5"/>
+                        <TextBlock Text="AnámesáMas"  FontSize="25"  HorizontalAlignment="Center" Margin="20 30 20 20" 
+                       FontFamily="Sitka Text" FontWeight="Bold" Foreground="#406474" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <Border CornerRadius="0 10 0 0" Margin="0,120,0,0" Background="#FF416474" HorizontalAlignment="Center" Width="300" Grid.RowSpan="2">
+                <StackPanel Margin="50 0 0 0" VerticalAlignment="Top" >
+                    <Image Source="/Source/Test.png" Height="50" Width="50" Margin="-150 50 0 0" MouseDown="Image_MouseDown"   />
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 0" >
+                        <StackPanel Margin="60 -40 0 0" HorizontalAlignment="Left">
+                            <TextBlock Cursor="Hand" Text="Опросы" Style="{StaticResource HeaderForDark}"  Margin="20 0 0 0" 
+                                   VerticalAlignment="Center" Name="tbText" MouseDown="tbText_MouseDown" ></TextBlock>
+                            <ListBox Cursor="Hand" Name="lbTest" FontSize="16" Foreground="White" Background="#406474" HorizontalAlignment="Left"
+                                 BorderThickness="0" Margin="16 0 0 0" Visibility="Collapsed" >
+                                <ListBoxItem Margin="20 5 0 0" >
+                                    <Button Width="110" Style="{StaticResource ListItem}" HorizontalContentAlignment="Left" Name="btnActivity" Click="btnActivity_Click">
+                                        - Активность
+                                    </Button>
+                                </ListBoxItem>
+                                <ListBoxItem Margin="20 5 0 0" >
+                                    <Button Width="90" Style="{StaticResource ListItem}" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" Click="Button_Click">
+                                        - Текущие
+                                    </Button>
+                                </ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Image Source="/Source/User.png" Height="50" Width="50" Margin="-160 50 0 0"/>
+                    <StackPanel Margin="0 50 0 0" >
+
+                        <TextBlock Cursor="Hand" Name="tbUser" Text="Профили" Style="{StaticResource HeaderForDark}"
+                               VerticalAlignment="Center" Margin="80 -150 50 0" MouseDown="tbUser_MouseDown"></TextBlock>
+                    </StackPanel>
+                    <Image Source="/Source/Directory.png" Height="55" Width="55" Margin="-160 0 0 0"/>
+                    <StackPanel Margin="0 50 0 0" >
+
+                        <TextBlock Cursor="Hand" Name="tbDirectory" Text="Справочник" Style="{StaticResource HeaderForDark}"
+                               VerticalAlignment="Center" Margin="80 -150 10 0" MouseDown="tbDirectory_MouseMove" ></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Grid Column="1" Cursor="" Grid.RowSpan="2">
+                <Border CornerRadius="10 " HorizontalAlignment="Left" BorderThickness="1" BorderBrush="#406474"  VerticalAlignment="Top"
+                    Height="50" Margin="50 10 0 0" Width="300" Background="#406474" >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock x:Name="date" Style="{StaticResource HeaderForDark}" Text="Быстрые действия"></TextBlock>
+
+                    </StackPanel>
+                </Border>
+                
+                <Button HorizontalAlignment="Right" Name="btnClose"  VerticalAlignment="Top" Margin="10" 
+                    Content="Выход" Click="btnClose_Click"></Button>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <Border  CornerRadius="10" BorderThickness="1" BorderBrush="#406474" Height="400" Margin="20 50 0 0" Width="400"  Background="White">
+                            <StackPanel>
+                                <Border CornerRadius="10 10 0 0" Height="50"  Width="400"
+                                    VerticalAlignment="Top"  Background="#406474">
+                                    <TextBlock Margin="10 10 10 0" Text="Добавление сотрудника" 
+                                           Style="{StaticResource HeaderForDark}" HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"></TextBlock>
+                                </Border>
+                                <TextBlock Text="Возможности:" Style="{StaticResource NormalForLight}" Margin="10"></TextBlock>
+                                <TextBlock Margin="20 0 0 0" Style="{StaticResource NormalForLight}">
+                            - Быстрое добавление сотрудника
+                            <LineBreak/>
+                            - Добавление всей необходимой 
+                            <LineBreak/>
+                             информации
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <Button Margin="25 -70 0 0 " Content="Перейти" Name="btnCreateTest" Click="btnCreateTest_Click" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Border BorderThickness="1" BorderBrush="#406474" CornerRadius="10" Height="400" Margin="80 50 20 0" Width="400" 
+                             Background="White">
+                            <StackPanel>
+                                <Border CornerRadius="10 10 0 0" Height="50"  Width="400" 
+                                    VerticalAlignment="Top"  Background="#406474">
+                                    <TextBlock Margin="10 10 10 0" Text="Настройка активности" 
+                                           Style="{StaticResource HeaderForDark}" HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"></TextBlock>
+                                </Border>
+                                <TextBlock Text="Возможности:" Margin="10" Style="{StaticResource NormalForLight}"></TextBlock>
+                                <TextBlock Style="{StaticResource NormalForLight}" Margin="20 0 0 0">
+                            - Просмотр всей запланированной
+                                    <LineBreak/>работы тестов
+                            <LineBreak/>
+                            - Удаление необходимых данных
+                                </TextBlock>
+
+
+                            </StackPanel>
+                        </Border>
+                        <Button Margin="60 -70 0 0 " Content="Перейти" Click="btnActivity_Click" ></Button>
+                    </StackPanel>
+
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,168 @@
+﻿<Window x:Class="Diary.UI.Casements.WindowHealth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.UI.Casements"
+        xmlns:charts="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        xmlns:local1="clr-namespace:Diary.UI.UC"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="700" MinWidth="1300" MaxHeight="700" MaxWidth="1300" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border CornerRadius="10" Background="#406474" Margin="10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30 10">
+            <Image Name="btnBack" Source="/Source/Back.png"  Cursor="Hand" Height="50"  MouseDown="btnBack_MouseDown"/>
+            <TextBlock Text="C" Style="{StaticResource HeaderForDark}" Margin="200 18 20 0"/>
+            <DatePicker Name="dpStartDate" SelectedDateChanged="dpStartDate_SelectedDateChanged"/>
+            <TextBlock Text="до" Style="{StaticResource HeaderForDark}" Margin="20 18 20 0"/>
+            <DatePicker Name="dpEndDate" SelectedDateChanged="dpEndDate_SelectedDateChanged" />
+            <TextBlock Name="tbDateStart" Text="{Binding Path=DateTimeValue, StringFormat=dd-MM-yyyy}" Style="{StaticResource HeaderForDark}" Margin="20 18 20 0"/>
+        </StackPanel>
+        
+        <TextBlock Name="tbName"  Style="{StaticResource HeaderForDark}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="100 50 0 -60">
+            <Border HorizontalAlignment="Left"  Height="440" Width="1000"></Border>
+            <Path HorizontalAlignment="Left" Stroke="#406474"  StrokeThickness="4.6" >
+                <Path.RenderTransform>
+                    <ScaleTransform ScaleY="-1"/>
+                </Path.RenderTransform>
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure x:Name="LinearСhart" IsClosed="False" StartPoint="0,0">
+                            
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </StackPanel>
+        <Path Grid.Row="1" Fill="LightPink"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20 10 10 60" Stroke="#CF9A5F"  StrokeThickness="4.6" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure IsClosed="False" StartPoint="60,0">
+                        <LineSegment Point="1250, 0"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20 20 10 50" Stroke="#CF9A5F"  StrokeThickness="4.6" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure IsClosed="False" StartPoint="1200, 0">
+                        <LineSegment Point="1250, -10"/>
+                        <LineSegment Point="1200, -20"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Grid.Row="1" Fill="LightPink"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20 10 10 60" Stroke="#CF9A5F"  StrokeThickness="4.6" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure IsClosed="False" StartPoint="60,0">
+                        <LineSegment Point="60, 440"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Grid.Row="1"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20 20 10 40" Stroke="#CF9A5F"  StrokeThickness="4.6" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure IsClosed="False" StartPoint="40, 60">
+                        <LineSegment Point="60, 30"/>
+                        <LineSegment Point="80, 60"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <TextBlock Grid.Row="1" Text="Оценка состояния" Margin="20 0 0 -200" Style="{StaticResource NormalForLight}" VerticalAlignment="Center" HorizontalAlignment="Left" >
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Line Grid.Row="1" X1="70" Y1="100" X2="90" Y2="100" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="452" X2="90" Y2="452" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="408" X2="90" Y2="408" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="364" X2="90" Y2="364" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="320" X2="90" Y2="320" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="276" X2="90" Y2="276" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="232" X2="90" Y2="232" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="188" X2="90" Y2="188" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="70" Y1="144" X2="90" Y2="144" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="100" Y1="480" X2="100" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="200" Y1="480" X2="200" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="300" Y1="480" X2="300" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="400" Y1="480" X2="400" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="500" Y1="480" X2="500" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="600" Y1="480" X2="600" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="700" Y1="480" X2="700" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="800" Y1="480" X2="800" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="900" Y1="480" X2="900" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="1000" Y1="480" X2="1000" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <Line Grid.Row="1" X1="1100" Y1="480" X2="1100" Y2="500" Stroke="#CF9A5F" StrokeThickness="3" />
+        <ListView Grid.Row="1" VerticalAlignment="Bottom" x:Name="ListDate" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Margin="140 -30 100 0" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#00000000" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#00000000"/>
+                       
+                    </Style.Resources>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    SnapsToDevicePixels="true">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  RecognizesAccessKey="True"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Foreground" Value="#406474"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <local1:UCDate Margin="8"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+           
+        </ListView>
+    </Grid>
+</Window>

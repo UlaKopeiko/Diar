@@ -1,0 +1,77 @@
+﻿<Window x:Class="Diary.UI.Casements.WindowInfTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.UI.Casements"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Дневник самочувствия" MinHeight="700" MinWidth="1300" MaxHeight="900" MaxWidth="1400" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Column="0" x:Name="mainAreal">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Background="#406474" CornerRadius="10" Margin="10">
+                <TextBlock Text="Название" HorizontalAlignment="Left" VerticalAlignment="Center" Name="tbTitle" Style="{StaticResource HeaderForDark}" Margin="50 0 0 0"/>
+            </Border>
+            <Grid Grid.Row="1" Background="White">
+            <StackPanel>
+                    <ListView  Grid.Row="0" x:Name="ListQuestions" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Height="400" Margin="10 10 10 0"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <StackPanel Orientation="Horizontal" MinHeight="40" >
+                                    <TextBlock  Text="{Binding Factor}" VerticalAlignment="Top" Width="20" Style="{StaticResource NormalForLight}"/>
+                                    <TextBlock Text="{Binding Text}" VerticalAlignment="Top" Width="700" TextWrapping="Wrap" Style="{StaticResource NormalForLight}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+           
+            </StackPanel>
+        </Grid>
+        </Grid>
+        <Grid Column="1" x:Name="openFilters" HorizontalAlignment="Right" Width="400">
+            <StackPanel Orientation="Horizontal">
+                <Border  Height="100" Width="30" Background="#CF9A5F" CornerRadius="10 0 0 10"  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="0 0 0 0" MouseDown="Border_MouseDown" >
+                    <StackPanel VerticalAlignment="Center">
+                        <Image Name="btnOpenImage" Height="20" Source="/Source/NavigatingLeft.png" />
+                        <Border Name="btnCloseImage" Background="#CF9A5F" Margin="0 -20 0 0">
+                            <Image  Height="20"   Source="/Source/NavigatingRight.png" />
+                        </Border>
+                    </StackPanel>
+                    
+                </Border>
+                <Border  Grid.Column="1" Background="#406474" CornerRadius="10" Margin="0 40" >
+                    <StackPanel VerticalAlignment="Top" Margin="0 60 0 0">
+                        <TextBox />
+                        <TextBlock  Name="tbSearch" Text="Поиск по содержанию" Margin="-20 -27 0 0" Opacity="0.5"  HorizontalAlignment="Center" Foreground="#508068"  Style="{StaticResource NormalForLight}"></TextBlock>
+                        <TextBox Margin="0 -30 0 0" Background="Transparent" Name="tbxSearch" TextChanged="tbxSearch_TextChanged" ></TextBox>
+                        <Button  Margin="0 150 0 0" Content="Настроить активность" Name="btnEditActivity" Click="btnEditActivity_Click" />
+                        <Button Margin="20" Content="В главное меню" Name="btnBackMenu" Click="btnBackMenu_Click"  />
+                        <Button  Margin="0 85 0 0" Content="Назад" Name="btnBack" Click="btnBack_Click" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            
+            
+        </Grid>
+        
+    </Grid>
+</Window>

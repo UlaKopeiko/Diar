@@ -1,0 +1,49 @@
+﻿<Window x:Class="Diary.UI.Casements.WindowTestPassing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.UI.Casements" xmlns:local1="clr-namespace:Diary.UI.UC"
+        mc:Ignorable="d"
+       WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="700" MinWidth="1300" MaxHeight="700" MaxWidth="1300" Style="{DynamicResource WindowStyle}" IsVisibleChanged="Window_IsVisibleChanged" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#406474" CornerRadius="10" Margin="10">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Orientation="Horizontal">
+                <Image Source="/Source/Back.png" Height="60" MouseDown="Image_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tbTest" Text="Название теста" Style="{StaticResource HeaderForDark}" VerticalAlignment="Center"/>
+                
+            </StackPanel>
+        </Border>
+        <TextBlock Name="tbTime"  Margin="40 0 " Style="{StaticResource HeaderForDark}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ScrollViewer Grid.Row="1" Margin="10 30" VirtualizingPanel.ScrollUnit="Pixel">
+        <StackPanel >
+            
+                <ListView x:Name="ListQuestion"  BorderThickness="0" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <local1:UCQuestion Margin="10" Width="1200"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Content="Завершить" Name="btnSave"  HorizontalAlignment="Center" Margin="40 0" Click="btnSave_Click"/>
+           
+            
+        </StackPanel>
+         </ScrollViewer>
+    </Grid>
+</Window>

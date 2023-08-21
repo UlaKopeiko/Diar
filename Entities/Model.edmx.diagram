@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78e3ad3547cc4b26ae51d76fb81d13c5" Name="Diagram1">
+        <EntityTypeShape EntityType="DiaryModel.ActivityTime" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Answer" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.CharacterAccentuation" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Directory" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Document" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Employee" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Feeling" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Formula" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.FormulaForTest" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Journal" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Position" Width="1.5" PointX="3.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Question" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Result" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.sysdiagram" Width="1.5" PointX="10.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.Test" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiaryModel.TestStatu" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="DiaryModel.FK_ActivityTime_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Answer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Employee_CharacterAccentuation" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Document_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Employee_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Feeling_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Journal_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_FormulaForTest_Formula" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_FormulaForTest_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Journal_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Question_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Results_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="DiaryModel.FK_Test_TestStatus" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

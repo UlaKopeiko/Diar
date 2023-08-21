@@ -1,0 +1,78 @@
+﻿<Window x:Class="Diary.UI.Casements.WindowAddEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.UI.Casements"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="900" MinWidth="1300" MaxHeight="900" MaxWidth="1300" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="800"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="Фамилия:" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                <TextBox HorizontalAlignment="Left" Margin="10 10 10 0" Name="tbxLast"/>
+                <TextBlock Text="Имя:" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                <TextBox HorizontalAlignment="Left" Margin="10 10 10 0" Name="tbxFirst"/>
+                <TextBlock Text="Отчество:" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                <TextBox HorizontalAlignment="Left" Margin="10 10 10 0" Name="tbxSurname"/>
+                <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+                    <TextBlock Text="Дата рождения:" Style="{StaticResource NormalForLight}" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                    <DatePicker Name="dpBirthday" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 10 10 0">
+                    <TextBlock Text="Должность:" Style="{StaticResource NormalForLight}" VerticalAlignment="Center"/>
+                    <ComboBox VerticalAlignment="Center" Width="300" Name="cbPosition" DisplayMemberPath="Title"/>
+                </StackPanel>
+                <TextBlock Text="Темперамент:" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                <TextBox HorizontalAlignment="Left" Margin="10 10 10 0" Name="tbxTemperament"/>
+                <TextBlock Text="Мотивация:" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                <TextBox HorizontalAlignment="Left" Margin="10 10 10 0" Name="tbxMotivation"/>
+                <TextBlock Text="Семья:" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                <TextBox HorizontalAlignment="Left" Margin="10 10 10 0" Name="tbxFamily"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10 10 0">
+                    <TextBlock Text="Акцентуация характера:" Style="{StaticResource NormalForLight}"/>
+                    <ComboBox Width="300" Name="cbCharacter" DisplayMemberPath="Title"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 10 10 0">
+                    <TextBlock Text="Данные для авторизации:" Style="{StaticResource NormalForLight}"/>
+                    <StackPanel>
+                        <TextBlock Text="Логин" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                        <TextBox Margin="10 10 10 0" Name="tbxLogin"/>
+                        <TextBlock Text="Пароль" Style="{StaticResource NormalForLight}" Margin="10 10 10 0"/>
+                        <TextBox Margin="10 10 10 0" Name="tbxPass"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Visibility="Collapsed">
+                <Border BorderThickness="2" CornerRadius="10" BorderBrush="#406474" Height="300" Width="300" Margin="10 100 10 0">
+                    <Image Source="/Source/Logo.png" Margin="50" />
+                </Border>
+                <Button Content="Добавить фото" Margin="10" Name="btnAddPhoto" Click="btnAddPhoto_Click"/>
+            </StackPanel>
+        </Grid>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Content="Назад" Margin="0 0 150 0" Name="btnBack" Click="btnBack_Click" />
+            <Button Content="Продолжить" Name="btnNext" Click="btnNext_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

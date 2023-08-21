@@ -1,0 +1,58 @@
+﻿<Window x:Class="Diary.UI.Casements.WindowUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.UI.Casements" xmlns:local1="clr-namespace:Diary.UI.UC"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Дневник самочувствия" MinHeight="700" MinWidth="1300" MaxHeight="900" MaxWidth="1800"
+    Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Decoration/WindowDecoration/WindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    
+    <Grid Background="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ListView VirtualizingPanel.ScrollUnit="Pixel" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center"  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Stretch" MinWidth="900" MaxWidth="1400" Margin="0" Background="White" 
+                  Name="ListUsers" BorderThickness="0"  >
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <local1:UCUser Margin="10"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Border Grid.Row="0" Background="#406474" Margin="10" CornerRadius="10" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Source/Back.png" Height="60" Cursor="Hand" Margin="20 10 10 10" MouseDown="btnBack_Click" />
+                <StackPanel VerticalAlignment="Center" Margin="680 0 0 0">
+
+
+                    <TextBox Width="480" Height="40"/>
+                    <TextBlock Name="tbSearch"  Text="Поиск по ФИО" Margin="0 -32 0 0" Opacity="0.5" HorizontalAlignment="Center" Foreground="#508068"  Style="{StaticResource NormalForLight}"></TextBlock>
+                    <Image Source="/Source/Search.png" Height="30" Width="30" Margin="10 -40 0 0 " HorizontalAlignment="Left"/>
+                    <TextBox Margin="50 -40 0 0" BorderThickness="0" Background="Transparent"  Width="430" Name="tbxSearch" Height="40" TextChanged="tbxSearch_TextChanged" ></TextBox>
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Button Name="btnAdd" Grid.Row="2" Content="Создать" Click="btnAdd_Click"/>
+    </Grid>
+</Window>
